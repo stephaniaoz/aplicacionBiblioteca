@@ -1,12 +1,9 @@
-<?php 
-   include_once("C:\wamp64\www\SISTEMAGESTIONASISTENCIA\Controller\controllerCredentials.php");
-   ?>
 <!DOCTYPE html>
 <html lang="en">
    <html>
       <head> 
          <meta charset="UTF-8">
-         <title>Pagina inicial</title>
+         <title>Disponibilidad</title>
          <link rel="stylesheet" type="text/css" href="css/style.css"/>
          <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -73,10 +70,17 @@
 
         <script type="text/javascript">
             $('document').ready(function(){
-                $("#btnLogin").click(function(){
-                    alert("Bienevenido");
-                    document.location.href="principal.php";
-                });
+                
+              $.post( "../Controller/TbBibliotecaController.php",
+              {
+                modulo: "informe",
+                componente: "listarDisponibilidad"
+              },
+              function(data,status){
+                  //alert("Data: " + data + "\nStatus: " + status);
+                  $("#listanovedad").html(data);
+              });
+
             });
         </script>
    </html>

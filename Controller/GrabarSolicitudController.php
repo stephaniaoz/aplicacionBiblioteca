@@ -32,10 +32,10 @@ include_once("C:xampp\htdocs\webservicebiblioteca\db\database_utilities.php");
 			$query = "	INSERT INTO tb_solicitud(
 					            solicitud_codigo, solicitud_nombrelibro, solicitud_mensajesolicitud, 
 					            solicitud_nombreestudiante, solicitud_codigoestudiante, tipsol_codigo, 
-					            solicitud_generacorreo, itelibdis_codigo, solicitud_correosolicitante)
+					            solicitud_generacorreo, itelibdis_codigo, solicitud_correosolicitante, solicitud_fechasolicitud)
 					    VALUES (".$codigomaximo.", '".$nombrelibro."', '".$mensajeestudiante."', 
 					            '".$nombreestudiante."', '".$codigoestudiante."', ".$tiposolicitud.", 
-					            'NO', ".$codigodisponibilidad.", '".$correoestudiante."'); ";
+					            'NO', ".$codigodisponibilidad.", '".$correoestudiante."', current_date); ";
 
 			$result = @pg_query($query) or die ('La consulta fallo: ' . pg_last_error());
 			$errorquery = @pg_last_error();
