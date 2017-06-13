@@ -25,7 +25,7 @@ include_once("C:xampp\htdocs\webservicebiblioteca\db\database_utilities.php");
 					            tiquete_codigo, tiquete_fechacreacion, tiquete_fechacaducidad, 
 					            tiquete_horacaducidad, itelibdis_codigo, tiquete_codigoestudiante, tiquete_correoestudiante, tiquete_observacionusuario)
 					    VALUES (".$codigomaximo.", current_date, current_date, 
-					            '19:00:00'::time, ".$codigodisponibilidad.", '".$codigoestudiante."' ,'".$correoestudiante."', '".$observacionestudiante."'); ";
+					            '24:00:00'::time, ".$codigodisponibilidad.", '".$codigoestudiante."' ,'".$correoestudiante."', '".$observacionestudiante."'); ";
 
 			$result = @pg_query($query) or die ('La consulta fallo: ' . pg_last_error());
 			$errorquery = @pg_last_error();
@@ -88,7 +88,7 @@ include_once("C:xampp\htdocs\webservicebiblioteca\db\database_utilities.php");
 
 	}
 
-	echo "su codigo de tiquete es: ".$codigomaximo;//json_encode($datos);
+	echo "su codigo de tiquete es: ".$codigomaximo.", habilitado hasta las 12:00 pm.";//json_encode($datos);
 
 
 ?>
