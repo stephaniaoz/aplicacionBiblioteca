@@ -10,6 +10,7 @@ include_once("C:xampp\htdocs\webservicebiblioteca\db\database_utilities.php");
 		$correoestudiante = $_REQUEST['correoestudiante'];
 		$libro_codigo = $_REQUEST['libro_codigo'];
 		$codigoestudiante = $_REQUEST['codigoestudiante'];
+		$observacionestudiante = $_REQUEST['observacionestudiante'];
 	}
 
 
@@ -22,9 +23,9 @@ include_once("C:xampp\htdocs\webservicebiblioteca\db\database_utilities.php");
 		
 			$query = "	INSERT INTO tb_tiquete(
 					            tiquete_codigo, tiquete_fechacreacion, tiquete_fechacaducidad, 
-					            tiquete_horacaducidad, itelibdis_codigo, tiquete_codigoestudiante, tiquete_correoestudiante)
+					            tiquete_horacaducidad, itelibdis_codigo, tiquete_codigoestudiante, tiquete_correoestudiante, tiquete_observacionusuario)
 					    VALUES (".$codigomaximo.", current_date, current_date, 
-					            '19:00:00'::time, ".$codigodisponibilidad.", '".$codigoestudiante."' ,'".$correoestudiante."'); ";
+					            '19:00:00'::time, ".$codigodisponibilidad.", '".$codigoestudiante."' ,'".$correoestudiante."', '".$observacionestudiante."'); ";
 
 			$result = @pg_query($query) or die ('La consulta fallo: ' . pg_last_error());
 			$errorquery = @pg_last_error();
