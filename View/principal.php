@@ -32,7 +32,7 @@
                   </div>
                   <div class='collapse navbar-collapse' id='acolapsar'>
                      <ul class='nav navbar-nav'>
-                        <li><a href='#'><span class='glyphicon glyphicon-home'></span>Inicio</a></li>
+                        <li><a href='principal.php'><span class='glyphicon glyphicon-home'></span>Inicio</a></li>
                         <li class='dropdown'>
                            <a href='#' class='dropdown-toggle' data-toggle='dropdown'><span class='glyphicon glyphicon-cog'>Informes<b class='caret'></b></a>
                            <ul class='dropdown-menu'>
@@ -56,13 +56,47 @@
                   </div>
                </div>
             </nav>
-            <div class="panel panel-default">
-               <div class="panel-heading">
-                  <h3 class="panel-title">Detalle</h3>
+                  <div class="col-md-4">
+                    <div class="panel panel-primary">
+                      <div class="panel-heading">Cantidad tiquetes generados</div>
+                      <div class="panel-body">
+                        <div style="text-align:center;width:320px;padding:0em 0;"><small style="color:gray;">
+                          <p id="cantidadtiquete"></p>
+                          </small> 
+                        </div>
+                      </div>
+                  </div>
+                  <div class="panel panel-primary">
+                      <div class="panel-heading">Cantidad solicitudes</div>
+                      <div class="panel-body">
+                        <div style="text-align:center;width:320px;padding:0em 0;"><small style="color:gray;">
+                          <p id="cantidadsolicitud"></p>
+                          </small> 
+                        </div>
+                      </div>
+                  </div>
+                  <div class="panel panel-primary">
+                      <div class="panel-heading">Cantidad libros disponibles</div>
+                      <div class="panel-body">
+                        <div style="text-align:center;width:320px;padding:0em 0;"><small style="color:gray;">
+                          <p id="cantidaddisponible"></p>
+                          </small> 
+                        </div>
+                      </div>
+                  </div>
+                  <div class="panel panel-primary">
+                      <div class="panel-heading">Libro más solicitado</div>
+                      <div class="panel-body">
+                        <div style="text-align:center;width:320px;padding:0em 0;"><small style="color:gray;">
+                          <p id="libromayorsolicitud"></p>
+                          </small> 
+                        </div>
+                      </div>
+                  </div>
+                </div>
+               <div class="panel-body" id="grafica">                  
+                  <!--<img src="http://chart.apis.google.com/chart?cht=p3&amp;chd=s:hW&amp;chs=450x150&amp;chl=LIBRO|CANTIDAD" alt="Grafico en Geeks.ms" width="700" height="450" />-->
                </div>
-               <div class="panel-body" id="listanovedad">
-               </div>
-            </div>
          </div>
       </body>
 
@@ -77,6 +111,58 @@
                     alert("Bienevenido");
                     document.location.href="principal.php";
                 });
+
+                $.post( "../Controller/TbBibliotecaController.php",
+                {
+                  modulo: "principal",
+                  componente: "cantidadtiquete"
+                },
+                function(data,status){
+                    //alert("Data: " + data + "\nStatus: " + status);
+                    $("#cantidadtiquete").html(data);
+                });
+
+                $.post( "../Controller/TbBibliotecaController.php",
+                {
+                  modulo: "principal",
+                  componente: "cantidadsolicitud"
+                },
+                function(data,status){
+                    //alert("Data: " + data + "\nStatus: " + status);
+                    $("#cantidadsolicitud").html(data);
+                });
+
+                $.post( "../Controller/TbBibliotecaController.php",
+                {
+                  modulo: "principal",
+                  componente: "cantidaddisponible"
+                },
+                function(data,status){
+                    //alert("Data: " + data + "\nStatus: " + status);
+                    $("#cantidaddisponible").html(data);
+                });
+
+                $.post( "../Controller/TbBibliotecaController.php",
+                {
+                  modulo: "principal",
+                  componente: "libromayorsolicitud"
+                },
+                function(data,status){
+                    //alert("Data: " + data + "\nStatus: " + status);
+                    $("#libromayorsolicitud").html(data);
+                });
+
+                $.post( "../Controller/TbBibliotecaController.php",
+                {
+                  modulo: "principal",
+                  componente: "grafica"
+                },
+                function(data,status){
+                    //alert("Data: " + data + "\nStatus: " + status);
+                    $("#grafica").html(data);
+                });
+
+                
             });
         </script>
    </html>

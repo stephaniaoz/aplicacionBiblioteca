@@ -23,9 +23,9 @@ include_once("C:xampp\htdocs\webservicebiblioteca\db\database_utilities.php");
 		
 			$query = "	INSERT INTO tb_tiquete(
 					            tiquete_codigo, tiquete_fechacreacion, tiquete_fechacaducidad, 
-					            tiquete_horacaducidad, itelibdis_codigo, tiquete_codigoestudiante, tiquete_correoestudiante, tiquete_observacionusuario)
+					            tiquete_horacaducidad, itelibdis_codigo, tiquete_codigoestudiante, tiquete_correoestudiante, tiquete_observacionusuario, estado_codigo)
 					    VALUES (".$codigomaximo.", current_date, current_date, 
-					            '24:00:00'::time, ".$codigodisponibilidad.", '".$codigoestudiante."' ,'".$correoestudiante."', '".$observacionestudiante."'); ";
+					            '24:00:00'::time, ".$codigodisponibilidad.", '".$codigoestudiante."' ,'".$correoestudiante."', '".$observacionestudiante."', 10); ";
 
 			$result = @pg_query($query) or die ('La consulta fallo: ' . pg_last_error());
 			$errorquery = @pg_last_error();

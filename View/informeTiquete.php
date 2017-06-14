@@ -29,7 +29,7 @@
                   </div>
                   <div class='collapse navbar-collapse' id='acolapsar'>
                      <ul class='nav navbar-nav'>
-                        <li><a href='#'><span class='glyphicon glyphicon-home'></span>Inicio</a></li>
+                        <li><a href='principal.php'><span class='glyphicon glyphicon-home'></span>Inicio</a></li>
                         <li class='dropdown'>
                            <a href='#' class='dropdown-toggle' data-toggle='dropdown'><span class='glyphicon glyphicon-cog'>Informes<b class='caret'></b></a>
                            <ul class='dropdown-menu'>
